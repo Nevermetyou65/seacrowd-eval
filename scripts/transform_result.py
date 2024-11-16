@@ -20,7 +20,7 @@ def upload_file(result_path: str, task_type: str, model_name: str):
     )
 
 def _get_dataset_type(dataset_name: str):
-    if dataset_name in ['m3exam_tha_seacrowd_qa', "thaiexam_qa"]:
+    if dataset_name in ['m3exam_tha_seacrowd_qa', "thaiexam_qa", "thaiexam2_qa"]:
         return 'MC'
     else:
         return 'NLU'

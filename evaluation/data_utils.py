@@ -23,7 +23,7 @@ NLU_TASK_LIST = {
     "belebele_tha_thai_seacrowd_qa",
     "xnli.tha_seacrowd_pairs",
     'thaiexam_qa',
-    "thaiexam_2_qa"
+    "thaiexam2_qa"
 }
 
 
@@ -44,7 +44,7 @@ def load_nlu_datasets():
         if config_name == 'thaiexam_qa':
             ds = datasets.load_dataset('kunato/thai-exam-seacrowd', revision='59198720623a81239dbbde1e77a98a183f002c41')
             cfg_name_to_dset_map[config_name] = (ds, Tasks.QUESTION_ANSWERING)
-        elif config_name == 'thaiexam_2_qa':
+        elif config_name == 'thaiexam2_qa':
             ds = datasets.load_dataset('scb10x/thaiexam-2', revision='549001291cb978a51496c6bcd5707c7d70d2317a')
             cfg_name_to_dset_map[config_name] = (ds, Tasks.QUESTION_ANSWERING)
         else:
