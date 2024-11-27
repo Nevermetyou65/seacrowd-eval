@@ -117,5 +117,13 @@
             "repo": "kunato/thai-exam-seacrowd",
             "use_file": false
         }
+    ],
+    "thaiexam2_qa": [
+        "thaiexam2_qa",
+        "QA",
+        {
+            "repo": "scb10x/thaiexam-2-seacrowd",
+            "use_file": false
+        }
     ]
 }
