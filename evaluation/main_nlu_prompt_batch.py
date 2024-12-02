@@ -192,7 +192,7 @@ if __name__ == "__main__":
 
                 # zero-shot inference
                 prompts, labels = [], []
-                count = 0
+                save_counter = 0
                 with torch.inference_mode():
                     for e, sample in tqdm(enumerate(test_dset), total=len(test_dset)):
                         if e < len(preds):
@@ -218,7 +218,16 @@ if __name__ == "__main__":
                                 preds.append(hyp)
                                 golds.append(label)
                             prompts, labels = [], []
-                            count += 1
+                            save_counter += 1
+                        
+                        if save_counter % 50 == 0:
+                            inference_df = pd.DataFrame(
+                                list(zip(inputs, preds, golds)), columns=["Input", "Pred", "Gold"]
+                            )
+                            inference_df.to_csv(
+                                f'{out_dir}/{dset_subset}_{prompt_lang}_{prompt_id}_{MODEL.split("/")[-1]}.csv',
+                                index=False,
+                            )
 
                     if len(prompts) > 0:
                         hyps = model_runner.predict_classification(
@@ -230,7 +239,8 @@ if __name__ == "__main__":
                             golds.append(label)
                         prompts, labels = [], []
 
-                # partial saving
+
+
                 inference_df = pd.DataFrame(
                     list(zip(inputs, preds, golds)), columns=["Input", "Pred", "Gold"]
                 )
